@@ -1,0 +1,12 @@
+/home/pashhun/RiderProjects/LingvoriaAPI/Data/obj/Debug/net8.0/Data.csproj.AssemblyReference.cache
+/home/pashhun/RiderProjects/LingvoriaAPI/Data/obj/Debug/net8.0/Data.GeneratedMSBuildEditorConfig.editorconfig
+/home/pashhun/RiderProjects/LingvoriaAPI/Data/obj/Debug/net8.0/Data.AssemblyInfoInputs.cache
+/home/pashhun/RiderProjects/LingvoriaAPI/Data/obj/Debug/net8.0/Data.AssemblyInfo.cs
+/home/pashhun/RiderProjects/LingvoriaAPI/Data/obj/Debug/net8.0/Data.csproj.CoreCompileInputs.cache
+/home/pashhun/RiderProjects/LingvoriaAPI/Data/bin/Debug/net8.0/Data.deps.json
+/home/pashhun/RiderProjects/LingvoriaAPI/Data/bin/Debug/net8.0/Data.dll
+/home/pashhun/RiderProjects/LingvoriaAPI/Data/bin/Debug/net8.0/Data.pdb
+/home/pashhun/RiderProjects/LingvoriaAPI/Data/obj/Debug/net8.0/Data.dll
+/home/pashhun/RiderProjects/LingvoriaAPI/Data/obj/Debug/net8.0/refint/Data.dll
+/home/pashhun/RiderProjects/LingvoriaAPI/Data/obj/Debug/net8.0/Data.pdb
+/home/pashhun/RiderProjects/LingvoriaAPI/Data/obj/Debug/net8.0/ref/Data.dll
