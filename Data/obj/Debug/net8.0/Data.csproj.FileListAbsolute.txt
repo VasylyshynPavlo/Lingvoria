@@ -10,3 +10,16 @@
 /home/pashhun/RiderProjects/LingvoriaAPI/Data/obj/Debug/net8.0/refint/Data.dll
 /home/pashhun/RiderProjects/LingvoriaAPI/Data/obj/Debug/net8.0/Data.pdb
 /home/pashhun/RiderProjects/LingvoriaAPI/Data/obj/Debug/net8.0/ref/Data.dll
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/bin/Debug/net8.0/Data.deps.json
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/bin/Debug/net8.0/Data.dll
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/bin/Debug/net8.0/Data.pdb
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/obj/Debug/net8.0/Data.csproj.AssemblyReference.cache
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/obj/Debug/net8.0/Data.GeneratedMSBuildEditorConfig.editorconfig
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/obj/Debug/net8.0/Data.AssemblyInfoInputs.cache
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/obj/Debug/net8.0/Data.AssemblyInfo.cs
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/obj/Debug/net8.0/Data.csproj.CoreCompileInputs.cache
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/obj/Debug/net8.0/Data.sourcelink.json
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/obj/Debug/net8.0/Data.dll
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/obj/Debug/net8.0/refint/Data.dll
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/obj/Debug/net8.0/Data.pdb
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/obj/Debug/net8.0/ref/Data.dll

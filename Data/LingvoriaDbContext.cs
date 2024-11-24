@@ -16,5 +16,6 @@ namespace Data
         public IMongoCollection<WordsCollection> WordsCollections => _database.GetCollection<WordsCollection>("WordsCollections");
         public IMongoCollection<Word> Words => _database.GetCollection<Word>("Words");
         public IMongoCollection<Example> Examples => _database.GetCollection<Example>("Examples");
+        public IMongoCollection<User> Users => _database.GetCollection<User>("Users");
     }
 }

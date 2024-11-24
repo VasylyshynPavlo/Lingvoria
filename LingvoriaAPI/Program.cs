@@ -9,6 +9,11 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader();
     });
 });
+builder.Services.AddSwaggerGen(c =>
+{
+    c.EnableAnnotations(); // Увімкнення підтримки анотацій
+});
+
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

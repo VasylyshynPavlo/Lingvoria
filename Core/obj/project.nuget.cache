@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "PNd/pQEizZI=",
+  "success": true,
+  "projectFilePath": "/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Core/Core.csproj",
+  "expectedPackageFiles": [
+    "/home/pashhun/.nuget/packages/mongodb.bson/3.0.0/mongodb.bson.3.0.0.nupkg.sha512",
+    "/home/pashhun/.nuget/packages/system.memory/4.5.5/system.memory.4.5.5.nupkg.sha512",
+    "/home/pashhun/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "/home/pashhun/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.10/microsoft.aspnetcore.app.ref.8.0.10.nupkg.sha512"
+  ],
+  "logs": []
+}

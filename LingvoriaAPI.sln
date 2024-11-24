@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LingvoriaAPI", "LingvoriaAP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{2740ACD2-5788-4BFD-AB0B-33F3A3CAAD4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{771A247D-2DE8-4FA8-83C0-74DB79E952D6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{2740ACD2-5788-4BFD-AB0B-33F3A3CAAD4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2740ACD2-5788-4BFD-AB0B-33F3A3CAAD4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2740ACD2-5788-4BFD-AB0B-33F3A3CAAD4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{771A247D-2DE8-4FA8-83C0-74DB79E952D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{771A247D-2DE8-4FA8-83C0-74DB79E952D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{771A247D-2DE8-4FA8-83C0-74DB79E952D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{771A247D-2DE8-4FA8-83C0-74DB79E952D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
