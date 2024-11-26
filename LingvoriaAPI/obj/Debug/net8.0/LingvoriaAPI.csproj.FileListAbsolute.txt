@@ -473,3 +473,5 @@
 /home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/LingvoriaAPI/obj/Debug/net8.0/LingvoriaAPI.csproj.CopyComplete
 /home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/LingvoriaAPI/bin/Debug/net8.0/BCrypt.Net-Next.dll
 /home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/LingvoriaAPI/bin/Debug/net8.0/Swashbuckle.AspNetCore.Annotations.dll
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/LingvoriaAPI/bin/Debug/net8.0/Core.dll
+/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/LingvoriaAPI/bin/Debug/net8.0/Core.pdb

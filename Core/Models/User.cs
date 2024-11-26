@@ -15,7 +15,7 @@ public class User
     public string Username { get; set; } = string.Empty;
     [DataMember]
     public string NormalizedUsername { get; set; } = string.Empty; 
-    public string FullName { get; set; } = string.Empty; 
+    public string? FullName { get; set; } = string.Empty; 
     public string Email { get; set; } = string.Empty;
     [DataMember]
     public string NormalizedEmail { get; set; } = string.Empty; 
@@ -27,7 +27,7 @@ public class User
     public bool LockoutEnabled { get; set; } = false;
     [DataMember]
     public DateTimeOffset? LockoutEnd { get; set; } = null;
-    public string PhoneNumber { get; set; } = string.Empty;
+    public string? PhoneNumber { get; set; } = string.Empty;
     [DataMember]
     public bool PhoneNumberConfirmed { get; set; } = false;
     [DataMember]

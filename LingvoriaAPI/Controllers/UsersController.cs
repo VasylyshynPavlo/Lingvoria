@@ -3,6 +3,7 @@ using Data.Models;
 using LingvoriaAPI.Engine;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace LingvoriaAPI.Controllers
 {
@@ -21,7 +22,7 @@ namespace LingvoriaAPI.Controllers
 
         [HttpPost]
         [Consumes("application/x-www-form-urlencoded")]
-        public async Task<IActionResult> CreateUser([FromForm] User form, string password)
+        public async Task<IActionResult> CreateUser([FromForm] CreateUser form, string password)
         {
             if (!ModelState.IsValid)
             {
@@ -35,6 +36,7 @@ namespace LingvoriaAPI.Controllers
                 AvatarUrl = form.AvatarUrl,
                 Username = form.Username,
                 NormalizedUsername = form.Username.ToUpper(),
+                FullName = form.FullName,
                 Email = form.Email,
                 NormalizedEmail = form.Email.ToUpper(),
                 PasswordHash = hashedPassword,
@@ -42,10 +44,20 @@ namespace LingvoriaAPI.Controllers
                 SecurityStamp = Guid.NewGuid().ToString(),
                 ConcurrencyStamp = Guid.NewGuid().ToString(),
             };
+            user.Id = user.Id;
 
             await _context.Users.InsertOneAsync(user);
 
             return Ok(user);
+        }
+
+        [HttpGet("/verify/user/password")]
+        public async Task<IActionResult> VerifyPassword(string username, string password)
+        {
+            var user = await _context.Users.Find(u => u.Username == username).FirstOrDefaultAsync();
+            string hashedPassword = _passwordHasher.HashPassword(password);
+            if (Pass) return Ok(true);
+            else return Ok(false);
         }
     }
 
