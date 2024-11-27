@@ -19,23 +19,23 @@ namespace LingvoriaAPI.Controllers
         }
 
         [HttpPost()]
-        public async Task<IActionResult> CreateWordsCollection([FromForm] WordsCollection form)
+        public async Task<IActionResult> CreateWordsCollection([FromForm] WordsCollectionModel form)
         {
-            WordsCollection collection = new WordsCollection
+            WordsCollectionModel collectionModel = new WordsCollectionModel
             {
                 Id = ObjectId.GenerateNewId(),
                 Language = form.Language,
                 UserId = form.UserId,
                 Words = form.Words
             };
-            await _context.WordsCollections.InsertOneAsync(collection);
-            return Ok(collection);
+            await _context.WordsCollections.InsertOneAsync(collectionModel);
+            return Ok(collectionModel);
         }
         
         [HttpPost("{collectionId}/word")]
-        public async Task<IActionResult> AddWordToCollection(int collectionId, [FromForm] Word form)
+        public async Task<IActionResult> AddWordToCollection(int collectionId, [FromForm] WordModel form)
         {
-            var word = new Word
+            var word = new WordModel
             {
                 Id = ObjectId.GenerateNewId(),
                 Description = form.Description,
@@ -53,7 +53,7 @@ namespace LingvoriaAPI.Controllers
         }
         
         [HttpPost("{collectionId}/word/{wordId}/example")]
-        public async Task<IActionResult> AddExampleToWord(int collectionId, string wordId, Example example)
+        public async Task<IActionResult> AddExampleToWord(int collectionId, string wordId, ExampleModel exampleModel)
         {
             var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
             if (collection == null)
@@ -63,9 +63,9 @@ namespace LingvoriaAPI.Controllers
             if (word == null)
                 return NotFound("Word not found");
 
-            word.Examples.Add(example);
+            word.Examples.Add(exampleModel);
             await _context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId.ToString()), collection);
-            return Ok(example);
+            return Ok(exampleModel);
         }
         
         [HttpGet()]
@@ -185,9 +185,9 @@ namespace LingvoriaAPI.Controllers
         }
 
         [HttpPut("{collectionId}")]
-        public async Task<IActionResult> UpdateWordsCollection(int collectionId, WordsCollection updatedCollection)
+        public async Task<IActionResult> UpdateWordsCollection(int collectionId, WordsCollectionModel updatedCollectionModel)
         {
-            if (updatedCollection == null)
+            if (updatedCollectionModel == null)
             {
                 return BadRequest("Updated collection data is null");
             }
@@ -196,15 +196,15 @@ namespace LingvoriaAPI.Controllers
             if (existingCollection == null)
                 return NotFound("Collection not found");
             
-            if (!string.IsNullOrEmpty(updatedCollection.Language) && updatedCollection.Language != existingCollection.Language)
-                existingCollection.Language = updatedCollection.Language;
+            if (!string.IsNullOrEmpty(updatedCollectionModel.Language) && updatedCollectionModel.Language != existingCollection.Language)
+                existingCollection.Language = updatedCollectionModel.Language;
 
-            if (!string.IsNullOrEmpty(updatedCollection.UserId) && updatedCollection.UserId != existingCollection.UserId)
-                existingCollection.UserId = updatedCollection.UserId;
+            if (!string.IsNullOrEmpty(updatedCollectionModel.UserId) && updatedCollectionModel.UserId != existingCollection.UserId)
+                existingCollection.UserId = updatedCollectionModel.UserId;
             
-            if (updatedCollection.Words != null && updatedCollection.Words.Count > 0)
+            if (updatedCollectionModel.Words != null && updatedCollectionModel.Words.Count > 0)
             {
-                existingCollection.Words = updatedCollection.Words;
+                existingCollection.Words = updatedCollectionModel.Words;
             }
             
             await _context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId.ToString()), existingCollection);
@@ -213,7 +213,7 @@ namespace LingvoriaAPI.Controllers
         }
         
         [HttpPut("{collectionId}/word/{wordId}")]
-        public async Task<IActionResult> UpdateWordInCollection(int collectionId, string wordId, Word updatedWord)
+        public async Task<IActionResult> UpdateWordInCollection(int collectionId, string wordId, WordModel updatedWordModel)
         {
             var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
             if (collection == null)
@@ -223,8 +223,8 @@ namespace LingvoriaAPI.Controllers
             if (word == null)
                 return NotFound("Word not found");
 
-            word.WordText = updatedWord.WordText;
-            word.Description = updatedWord.Description;
+            word.WordText = updatedWordModel.WordText;
+            word.Description = updatedWordModel.Description;
 
             await _context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId.ToString()), collection);
 
@@ -232,7 +232,7 @@ namespace LingvoriaAPI.Controllers
         }
 
         [HttpPut("{collectionId}/word/{wordId}/example/{exampleId}")]
-        public async Task<IActionResult> UpdateExampleForWord(int collectionId, string wordId, int exampleId, Example updatedExample)
+        public async Task<IActionResult> UpdateExampleForWord(int collectionId, string wordId, int exampleId, ExampleModel updatedExampleModel)
         {
             var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
             if (collection == null)
@@ -246,7 +246,7 @@ namespace LingvoriaAPI.Controllers
             if (example == null)
                 return NotFound("Example not found");
 
-            example.Text = updatedExample.Text;
+            example.Text = updatedExampleModel.Text;
 
             await _context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId.ToString()), collection);
 

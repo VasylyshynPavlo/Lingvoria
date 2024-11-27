@@ -4,14 +4,14 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Data.Models;  
 
-public class User
+public class UserModel
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     [DataMember]
     public ObjectId Id { get; set; }
     public string UserId { get; set; }
-    public string AvatarUrl { get; set; } = string.Empty; 
+    public string? AvatarUrl { get; set; } = string.Empty; 
     public string Username { get; set; } = string.Empty;
     [DataMember]
     public string NormalizedUsername { get; set; } = string.Empty; 

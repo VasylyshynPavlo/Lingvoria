@@ -13,9 +13,9 @@ namespace Data
             _database = client.GetDatabase(databaseName);
         }
 
-        public IMongoCollection<WordsCollection> WordsCollections => _database.GetCollection<WordsCollection>("WordsCollections");
-        public IMongoCollection<Word> Words => _database.GetCollection<Word>("Words");
-        public IMongoCollection<Example> Examples => _database.GetCollection<Example>("Examples");
-        public IMongoCollection<User> Users => _database.GetCollection<User>("Users");
+        public IMongoCollection<WordsCollectionModel> WordsCollections => _database.GetCollection<WordsCollectionModel>("WordsCollections");
+        public IMongoCollection<WordModel> Words => _database.GetCollection<WordModel>("Words");
+        public IMongoCollection<ExampleModel> Examples => _database.GetCollection<ExampleModel>("Examples");
+        public IMongoCollection<UserModel> Users => _database.GetCollection<UserModel>("Users");
     }
 }

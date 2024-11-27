@@ -1,19 +1,22 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Data.Models;
 
-public class WordsCollection
+public class WordModel
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
     [DataMember]
     public ObjectId Id { get; set; }
+
     [Required]
-    public string UserId { get; set; } = string.Empty;
+    public string WordText { get; set; } = string.Empty;
+    public string Description { get; set; } = string.Empty;
     [Required]
-    public string Language { get; set; } = string.Empty;
-    public List<Word> Words { get; set; }
+    public string Translate { get; set; } = string.Empty;
+    public List<ExampleModel> Examples { get; set; }
 }

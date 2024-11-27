@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/Data.csproj": {}
+    "/home/pashhun/Study/ITSTEP/С#/Data/Data.csproj": {}
   },
   "projects": {
-    "/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Core/Core.csproj": {
+    "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Core/Core.csproj",
+        "projectUniqueName": "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj",
         "projectName": "Core",
-        "projectPath": "/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Core/Core.csproj",
+        "projectPath": "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj",
         "packagesPath": "/home/pashhun/.nuget/packages/",
-        "outputPath": "/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Core/obj/",
+        "outputPath": "/home/pashhun/Study/ITSTEP/С#/Core/obj/",
         "projectStyle": "PackageReference",
         "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
@@ -33,13 +33,30 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net": {
+              "target": "Package",
+              "version": "[0.1.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.11.0, )"
+            },
             "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.0.0, )"
             }
@@ -55,29 +72,23 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.10, 8.0.10]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/pashhun/.dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/Data.csproj": {
+    "/home/pashhun/Study/ITSTEP/С#/Data/Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/Data.csproj",
+        "projectUniqueName": "/home/pashhun/Study/ITSTEP/С#/Data/Data.csproj",
         "projectName": "Data",
-        "projectPath": "/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/Data.csproj",
+        "projectPath": "/home/pashhun/Study/ITSTEP/С#/Data/Data.csproj",
         "packagesPath": "/home/pashhun/.nuget/packages/",
-        "outputPath": "/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Data/obj/",
+        "outputPath": "/home/pashhun/Study/ITSTEP/С#/Data/obj/",
         "projectStyle": "PackageReference",
         "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
@@ -93,8 +104,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Core/Core.csproj": {
-                "projectPath": "/home/pashhun/Study/ITSTEP/C#/web_api/Lingvoria/Core/Core.csproj"
+              "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj": {
+                "projectPath": "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj"
               }
             }
           }
@@ -103,6 +114,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -137,18 +153,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[8.0.10, 8.0.10]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/pashhun/.dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,6 +1,6 @@
 namespace Data.Models;
 
-public class CreateUser
+public class RegisterModel
 {
     public string? AvatarUrl { get; set; } = string.Empty;
     public string Username { get; set; } = string.Empty;

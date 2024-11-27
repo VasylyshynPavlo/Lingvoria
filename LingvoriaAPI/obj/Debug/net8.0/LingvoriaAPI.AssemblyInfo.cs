@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LingvoriaAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9579c5c3e8010543029331b713134143a6f9c381")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e88b0c364041fbdc2b42083de3a59d2bb72ad826")]
 [assembly: System.Reflection.AssemblyProductAttribute("LingvoriaAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LingvoriaAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

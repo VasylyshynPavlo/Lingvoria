@@ -1,4 +1,4 @@
-namespace LingvoriaAPI.Engine
+namespace Core
 {
     public class PasswordHasher
     {

@@ -4,7 +4,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Data.Models;
 
-public class Example
+public class ExampleModel
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
