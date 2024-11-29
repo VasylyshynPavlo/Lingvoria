@@ -2,7 +2,7 @@ using System.Runtime.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Data.Models;  
+namespace Core.Models;  
 
 public class UserModel
 {
@@ -10,7 +10,6 @@ public class UserModel
     [BsonRepresentation(BsonType.ObjectId)]
     [DataMember]
     public ObjectId Id { get; set; }
-    public string UserId { get; set; }
     public string? AvatarUrl { get; set; } = string.Empty; 
     public string Username { get; set; } = string.Empty;
     [DataMember]

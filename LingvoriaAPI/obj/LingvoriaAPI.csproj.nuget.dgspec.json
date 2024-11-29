@@ -44,6 +44,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "BCrypt.Net": {
               "target": "Package",
               "version": "[0.1.0, )"
@@ -52,6 +56,10 @@
               "target": "Package",
               "version": "[11.11.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
             "MongoDB.Bson": {
               "target": "Package",
               "version": "[3.0.0, )"
@@ -59,87 +67,6 @@
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[3.0.0, )"
-            }
-          },
-          "imports": [
-            "net461",
-            "net462",
-            "net47",
-            "net471",
-            "net472",
-            "net48",
-            "net481"
-          ],
-          "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/home/pashhun/.dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
-        }
-      }
-    },
-    "/home/pashhun/Study/ITSTEP/С#/Data/Data.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/home/pashhun/Study/ITSTEP/С#/Data/Data.csproj",
-        "projectName": "Data",
-        "projectPath": "/home/pashhun/Study/ITSTEP/С#/Data/Data.csproj",
-        "packagesPath": "/home/pashhun/.nuget/packages/",
-        "outputPath": "/home/pashhun/Study/ITSTEP/С#/Data/obj/",
-        "projectStyle": "PackageReference",
-        "UsingMicrosoftNETSdk": false,
-        "configFilePaths": [
-          "/home/pashhun/.nuget/NuGet/NuGet.Config"
-        ],
-        "originalTargetFrameworks": [
-          "net8.0"
-        ],
-        "sources": {
-          "https://api.nuget.org/v3/index.json": {}
-        },
-        "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
-            "projectReferences": {
-              "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj": {
-                "projectPath": "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj"
-              }
-            }
-          }
-        },
-        "warningProperties": {
-          "warnAsError": [
-            "NU1605"
-          ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
-        }
-      },
-      "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
-          "dependencies": {
-            "MongoDB.Bson": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "MongoDB.Driver": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[7.0.0, )"
-            },
-            "Swashbuckle.AspNetCore.Annotations": {
-              "target": "Package",
-              "version": "[7.0.0, )"
             }
           },
           "imports": [
@@ -185,8 +112,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "/home/pashhun/Study/ITSTEP/С#/Data/Data.csproj": {
-                "projectPath": "/home/pashhun/Study/ITSTEP/С#/Data/Data.csproj"
+              "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj": {
+                "projectPath": "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj"
               }
             }
           }
@@ -206,6 +133,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "FluentValidation": {
               "target": "Package",
               "version": "[11.11.0, )"

@@ -2,7 +2,7 @@ using System.Runtime.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Data.Models;
+namespace Core.Models;
 
 public class ExampleModel
 {

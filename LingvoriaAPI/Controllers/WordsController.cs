@@ -1,8 +1,12 @@
+using AutoMapper;
+using Core.Interfaces;
+using Core.Models;
+using Core.Services;
 using Data;
-using Data.Models;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver;
+using Microsoft.Extensions.Options;
 using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace LingvoriaAPI.Controllers
 {
@@ -11,247 +15,154 @@ namespace LingvoriaAPI.Controllers
     public class WordsController : ControllerBase
     {
         private readonly LingvoriaDbContext _context;
-        
-        public WordsController()
+        private readonly IMapper _mapper;
+        private readonly WordService _wordService;
+        public WordsController(IMapper mapper)
         {
-            // Підключення до MongoDB
-            _context = new LingvoriaDbContext("mongodb://localhost:27017", "LingvoriaDb");
+            this._context = new LingvoriaDbContext("mongodb://localhost:27017", "LingvoriaDb");
+            this._mapper = mapper;
+            this._wordService = new WordService(_context, mapper);
         }
-
+        //--------------------POST--------------------
+        #region POST
+        
         [HttpPost()]
-        public async Task<IActionResult> CreateWordsCollection([FromForm] WordsCollectionModel form)
+        public async Task<IActionResult> CreateWordsCollection([FromForm] CreateWordsCollectionModel wordsCollectionModel)
         {
-            WordsCollectionModel collectionModel = new WordsCollectionModel
-            {
-                Id = ObjectId.GenerateNewId(),
-                Language = form.Language,
-                UserId = form.UserId,
-                Words = form.Words
-            };
-            await _context.WordsCollections.InsertOneAsync(collectionModel);
-            return Ok(collectionModel);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var result = await _wordService.CreateCollection(wordsCollectionModel);
+            if (result.Code == "200") return Ok();
+            return BadRequest("Something Went Wrong");
+        }
+
+        [HttpPost("words")]
+        public async Task<IActionResult> AddWord([FromForm] CreateWordModel wordModel)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var result = await _wordService.AddWord(wordModel);
+            if (result.Code == "200") return Ok();
+            else if (result.Code == "404") return NotFound(result.Message);
+            else return BadRequest("Something Went Wrong");
+        }
+
+        [HttpPost("examples")]
+        public async Task<IActionResult> AddExample([FromForm] CreateExampleModel wordExampleModel)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var result = await _wordService.AddExample(wordExampleModel);
+            if (result.Code == "200") return Ok(result.Data);
+            else if (result.Code == "404") return NotFound(result.Message);
+            else return BadRequest("Something Went Wrong");
         }
         
-        [HttpPost("{collectionId}/word")]
-        public async Task<IActionResult> AddWordToCollection(int collectionId, [FromForm] WordModel form)
-        {
-            var word = new WordModel
-            {
-                Id = ObjectId.GenerateNewId(),
-                Description = form.Description,
-                Translate = form.Translate,
-                WordText = form.WordText,
-                Examples = form.Examples,
-            };
-            var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
-            if (collection == null)
-                return NotFound("Collection not found");
-
-            collection.Words.Add(word);
-            await _context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId.ToString()), collection);
-            return Ok(word);
-        }
+        #endregion
         
-        [HttpPost("{collectionId}/word/{wordId}/example")]
-        public async Task<IActionResult> AddExampleToWord(int collectionId, string wordId, ExampleModel exampleModel)
-        {
-            var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
-            if (collection == null)
-                return NotFound("Collection not found");
-
-            var word = collection.Words.FirstOrDefault(w => w.WordText == wordId);
-            if (word == null)
-                return NotFound("Word not found");
-
-            word.Examples.Add(exampleModel);
-            await _context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId.ToString()), collection);
-            return Ok(exampleModel);
-        }
+        //--------------------GET--------------------
+        #region GET
+        
         
         [HttpGet()]
         public async Task<IActionResult> GetAllWordsCollections()
         {
-            var collections = await _context.WordsCollections.Find(_ => true).ToListAsync();
-            return Ok(collections);
-        }
-        
-        [HttpGet("{collectionId}")]
-        public async Task<IActionResult> GetWordsCollectionById(int collectionId)
-        {
-            var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
-            if (collection == null)
-                return NotFound("Collection not found");
-
-            return Ok(collection);
-        }
-        
-        [HttpGet("{collectionId}/words")]
-        public async Task<IActionResult> GetWordsInCollection(int collectionId)
-        {
-            var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
-            if (collection == null)
-                return NotFound("Collection not found");
-
-            return Ok(collection.Words);
-        }
-        
-        [HttpGet("{collectionId}/word/{wordText}")]
-        public async Task<IActionResult> GetWordInCollection(int collectionId, string wordText)
-        {
-            var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
-            if (collection == null)
-                return NotFound("Collection not found");
-
-            var word = collection.Words.FirstOrDefault(w => w.WordText == wordText);
-            if (word == null)
-                return NotFound("Word not found");
-
-            return Ok(word);
-        }
-        
-        [HttpGet("{collectionId}/word/{wordText}/examples")]
-        public async Task<IActionResult> GetExamplesForWord(int collectionId, string wordText)
-        {
-            var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
-            if (collection == null)
-                return NotFound("Collection not found");
-
-            var word = collection.Words.FirstOrDefault(w => w.WordText == wordText);
-            if (word == null)
-                return NotFound("Word not found");
-
-            return Ok(word.Examples);
-        }
-        
-        [HttpGet("user/{userId}")]
-        public async Task<IActionResult> GetWordsCollectionsByUserId(string userId)
-        {
-            var collections = await _context.WordsCollections
-                .Find(w => w.UserId == userId)
-                .ToListAsync();
-
-            if (collections.Count == 0)
-                return NotFound("No collections found for this user");
-
-            return Ok(collections);
-        }
-
-        [HttpDelete("{collectionId}/word/{wordId}/example/{exampleId}")]
-        public async Task<IActionResult> DeleteExampleFromWord(int collectionId, string wordId, int exampleId)
-        {
-            var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
-            if (collection == null)
-                return NotFound("Collection not found");
-
-            var word = collection.Words.FirstOrDefault(w => w.WordText == wordId);
-            if (word == null)
-                return NotFound("Word not found");
-
-            var example = word.Examples.FirstOrDefault(e => e.Id == new ObjectId(collectionId.ToString()));
-            if (example == null)
-                return NotFound("Example not found");
-
-            word.Examples.Remove(example);
-            await _context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId.ToString()), collection);
-
-            return Ok("Example deleted successfully");
-        }
-
-        [HttpDelete("{collectionId}/word/{wordId}")]
-        public async Task<IActionResult> DeleteWordFromCollection(int collectionId, string wordId)
-        {
-            var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
-            if (collection == null)
-                return NotFound("Collection not found");
-
-            var word = collection.Words.FirstOrDefault(w => w.WordText == wordId);
-            if (word == null)
-                return NotFound("Word not found");
-
-            collection.Words.Remove(word);
-            await _context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId.ToString()), collection);
-
-            return Ok("Word deleted successfully");
-        }
-
-        [HttpDelete("{collectionId}")]
-        public async Task<IActionResult> DeleteWordsCollection(int collectionId)
-        {
-            var result = await _context.WordsCollections.DeleteOneAsync(w => w.Id == new ObjectId(collectionId.ToString()));
-            if (result.DeletedCount == 0)
-                return NotFound("Collection not found");
-
-            return Ok("Collection deleted successfully");
-        }
-
-        [HttpPut("{collectionId}")]
-        public async Task<IActionResult> UpdateWordsCollection(int collectionId, WordsCollectionModel updatedCollectionModel)
-        {
-            if (updatedCollectionModel == null)
+            var result = await _wordService.GetCollections();
+            if (result.Code == "200")
             {
-                return BadRequest("Updated collection data is null");
+                if (result.Data is List<WordsCollectionModel> collections)
+                {
+                    var responseData = collections.Select(c => new
+                    {
+                        Id = c.Id.ToString(),
+                        Title = c.Title,
+                        UserId = c.UserId,
+                        Language = c.Language,
+                        Words = c.Words.Select(w => new
+                        {
+                            Id = w.Id.ToString(),
+                            Word = w.Word,
+                            Description = w.Description,
+                            Translate = w.Translate,
+                            Examples = w.Examples.Select(e => new
+                            {
+                                Id = e.Id.ToString(),
+                                Text = e.Text,
+                                Tranlate = e.Translate,
+                            })
+                        }).ToList()
+                    }).ToList();
+
+                    return Ok(responseData);
+                }
+                else
+                {
+                    return BadRequest("Data is not in the expected format.");
+                }
             }
-
-            var existingCollection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
-            if (existingCollection == null)
-                return NotFound("Collection not found");
-            
-            if (!string.IsNullOrEmpty(updatedCollectionModel.Language) && updatedCollectionModel.Language != existingCollection.Language)
-                existingCollection.Language = updatedCollectionModel.Language;
-
-            if (!string.IsNullOrEmpty(updatedCollectionModel.UserId) && updatedCollectionModel.UserId != existingCollection.UserId)
-                existingCollection.UserId = updatedCollectionModel.UserId;
-            
-            if (updatedCollectionModel.Words != null && updatedCollectionModel.Words.Count > 0)
-            {
-                existingCollection.Words = updatedCollectionModel.Words;
-            }
-            
-            await _context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId.ToString()), existingCollection);
-
-            return Ok(existingCollection);
+            else if (result.Code == "404") return NotFound(result.Message);
+            else return BadRequest("Something Went Wrong");
         }
         
-        [HttpPut("{collectionId}/word/{wordId}")]
-        public async Task<IActionResult> UpdateWordInCollection(int collectionId, string wordId, WordModel updatedWordModel)
+        
+        
+        [HttpGet("{colectionId}/words")]
+        public async Task<IActionResult> GetWordsByCollection(string colectionId)
         {
-            var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
-            if (collection == null)
-                return NotFound("Collection not found");
-
-            var word = collection.Words.FirstOrDefault(w => w.WordText == wordId);
-            if (word == null)
-                return NotFound("Word not found");
-
-            word.WordText = updatedWordModel.WordText;
-            word.Description = updatedWordModel.Description;
-
-            await _context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId.ToString()), collection);
-
-            return Ok(word);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var result = await _wordService.GetWords(colectionId);
+            if (result.Code == "200")
+            {
+                if (result.Data is List<WordModel> words)
+                {
+                    var responseData = words.Select(w => new
+                    {
+                        Id = w.Id.ToString(),
+                        Word = w.Word,
+                        Description = w.Description,
+                        Translate = w.Translate,
+                        Examples = w.Examples.Select(e => new
+                        {
+                            Id = e.Id.ToString(),
+                            Text = e.Text,
+                            Tranlate = e.Translate,
+                        }).ToList()
+                    }).ToList();
+                    return Ok(responseData);
+                }
+                else return BadRequest("Data is not in the expected format.");
+            }
+            else if (result.Code == "404") return NotFound(result.Message);
+            else return BadRequest("Something Went Wrong");
         }
 
-        [HttpPut("{collectionId}/word/{wordId}/example/{exampleId}")]
-        public async Task<IActionResult> UpdateExampleForWord(int collectionId, string wordId, int exampleId, ExampleModel updatedExampleModel)
+        [HttpGet("{colectionId}/words/{wordId}")]
+        public async Task<IActionResult> GetWordById(string colectionId, string wordId)
         {
-            var collection = await _context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId.ToString())).FirstOrDefaultAsync();
-            if (collection == null)
-                return NotFound("Collection not found");
-
-            var word = collection.Words.FirstOrDefault(w => w.WordText == wordId);
-            if (word == null)
-                return NotFound("Word not found");
-
-            var example = word.Examples.FirstOrDefault(e => e.Id == new ObjectId(collectionId.ToString()));
-            if (example == null)
-                return NotFound("Example not found");
-
-            example.Text = updatedExampleModel.Text;
-
-            await _context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId.ToString()), collection);
-
-            return Ok(example);
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+            var result = await _wordService.GetWordById(colectionId, wordId);
+            if (result.Code == "200")
+            {
+                if (result.Data is WordModel word)
+                {
+                    var responseData = new
+                    {
+                        Id = word.Id.ToString(),
+                        word.Word,
+                        word.Description,
+                        word.Translate,
+                        Examples = word.Examples.Select(e => new
+                        {
+                            Id = e.Id.ToString(),
+                            Text = e.Text,
+                            Tranlate = e.Translate,
+                        }).ToList()
+                    };
+                    return Ok(responseData);
+                }
+                else return BadRequest("Data is not in the expected format.");
+            }
+            else if (result.Code == "404") return NotFound(result.Message);
+            else return BadRequest("Something Went Wrong");
         }
+        #endregion
 
     }
 }

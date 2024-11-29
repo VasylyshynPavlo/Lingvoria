@@ -1,8 +1,11 @@
 using System.Text;
+using Core.MapperProfile;
+using Core.Models;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using Core.Validators;
+//using Core.Validators;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -64,16 +67,17 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
 // Add services to the container.
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddFluentValidationAutoValidation();
+//builder.Services.AddFluentValidationAutoValidation();
 //builder.Services.AddFluentValidationClientsideAdapters();
-builder.Services.AddValidatorsFromAssemblyContaining<CreateUserValidator>();
+//builder.Services.AddValidatorsFromAssemblyContaining<CreateUserValidator>();
+
+builder.Services.AddAutoMapper(typeof(AppProfile));
 
 var app = builder.Build();
 

@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Data.Models;
+namespace Core.Models;
 
 public class WordsCollectionModel
 {
@@ -11,6 +11,7 @@ public class WordsCollectionModel
     [BsonRepresentation(BsonType.ObjectId)]
     [DataMember]
     public ObjectId Id { get; set; }
+    public string? Title { get; set; }
     [Required]
     public string UserId { get; set; } = string.Empty;
     [Required]

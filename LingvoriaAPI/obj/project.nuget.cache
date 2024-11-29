@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8CJOvBgD4Sw=",
+  "dgSpecHash": "/qzxEsTSX7o=",
   "success": true,
   "projectFilePath": "/home/pashhun/Study/ITSTEP/С#/LingvoriaAPI/LingvoriaAPI.csproj",
   "expectedPackageFiles": [
+    "/home/pashhun/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/home/pashhun/.nuget/packages/bcrypt.net/0.1.0/bcrypt.net.0.1.0.nupkg.sha512",
     "/home/pashhun/.nuget/packages/dnsclient/1.6.1/dnsclient.1.6.1.nupkg.sha512",
     "/home/pashhun/.nuget/packages/fluentvalidation/11.11.0/fluentvalidation.11.11.0.nupkg.sha512",
@@ -83,6 +84,8 @@
     "/home/pashhun/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/8.0.2/microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",
     "/home/pashhun/.nuget/packages/microsoft.extensions.dependencymodel/8.0.2/microsoft.extensions.dependencymodel.8.0.2.nupkg.sha512",
     "/home/pashhun/.nuget/packages/microsoft.extensions.logging.abstractions/2.0.0/microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
+    "/home/pashhun/.nuget/packages/microsoft.extensions.options/6.0.0/microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "/home/pashhun/.nuget/packages/microsoft.extensions.primitives/6.0.0/microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "/home/pashhun/.nuget/packages/microsoft.identitymodel.abstractions/7.1.2/microsoft.identitymodel.abstractions.7.1.2.nupkg.sha512",
     "/home/pashhun/.nuget/packages/microsoft.identitymodel.jsonwebtokens/7.1.2/microsoft.identitymodel.jsonwebtokens.7.1.2.nupkg.sha512",
     "/home/pashhun/.nuget/packages/microsoft.identitymodel.logging/7.1.2/microsoft.identitymodel.logging.7.1.2.nupkg.sha512",

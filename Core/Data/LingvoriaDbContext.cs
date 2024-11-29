@@ -1,5 +1,5 @@
+using Core.Models;
 using MongoDB.Driver;
-using Data.Models;
 
 namespace Data
 {
