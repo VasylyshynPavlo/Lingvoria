@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/qzxEsTSX7o=",
+  "dgSpecHash": "ryFRNoQMB8A=",
   "success": true,
-  "projectFilePath": "/home/pashhun/Study/ITSTEP/С#/LingvoriaAPI/LingvoriaAPI.csproj",
+  "projectFilePath": "/home/pashhun/Study/itstep/ch/LingvoriaAPI/LingvoriaAPI.csproj",
   "expectedPackageFiles": [
     "/home/pashhun/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/home/pashhun/.nuget/packages/bcrypt.net/0.1.0/bcrypt.net.0.1.0.nupkg.sha512",

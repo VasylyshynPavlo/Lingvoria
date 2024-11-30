@@ -1130,11 +1130,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj",
+      "projectUniqueName": "/home/pashhun/Study/itstep/ch/Core/Core.csproj",
       "projectName": "Core",
-      "projectPath": "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj",
+      "projectPath": "/home/pashhun/Study/itstep/ch/Core/Core.csproj",
       "packagesPath": "/home/pashhun/.nuget/packages/",
-      "outputPath": "/home/pashhun/Study/ITSTEP/С#/Core/obj/",
+      "outputPath": "/home/pashhun/Study/itstep/ch/Core/obj/",
       "projectStyle": "PackageReference",
       "UsingMicrosoftNETSdk": false,
       "configFilePaths": [

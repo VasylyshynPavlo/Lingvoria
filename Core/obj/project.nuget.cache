@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Q2jLzVbbpxM=",
+  "dgSpecHash": "FGBsy5XQG0U=",
   "success": true,
-  "projectFilePath": "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj",
+  "projectFilePath": "/home/pashhun/Study/itstep/ch/Core/Core.csproj",
   "expectedPackageFiles": [
     "/home/pashhun/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/home/pashhun/.nuget/packages/bcrypt.net/0.1.0/bcrypt.net.0.1.0.nupkg.sha512",

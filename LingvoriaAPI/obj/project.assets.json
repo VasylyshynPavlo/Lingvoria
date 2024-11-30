@@ -7118,11 +7118,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/pashhun/Study/ITSTEP/С#/LingvoriaAPI/LingvoriaAPI.csproj",
+      "projectUniqueName": "/home/pashhun/Study/itstep/ch/LingvoriaAPI/LingvoriaAPI.csproj",
       "projectName": "LingvoriaAPI",
-      "projectPath": "/home/pashhun/Study/ITSTEP/С#/LingvoriaAPI/LingvoriaAPI.csproj",
+      "projectPath": "/home/pashhun/Study/itstep/ch/LingvoriaAPI/LingvoriaAPI.csproj",
       "packagesPath": "/home/pashhun/.nuget/packages/",
-      "outputPath": "/home/pashhun/Study/ITSTEP/С#/LingvoriaAPI/obj/",
+      "outputPath": "/home/pashhun/Study/itstep/ch/LingvoriaAPI/obj/",
       "projectStyle": "PackageReference",
       "UsingMicrosoftNETSdk": false,
       "configFilePaths": [
@@ -7138,8 +7138,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj": {
-              "projectPath": "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj"
+            "/home/pashhun/Study/itstep/ch/Core/Core.csproj": {
+              "projectPath": "/home/pashhun/Study/itstep/ch/Core/Core.csproj"
             }
           }
         }
