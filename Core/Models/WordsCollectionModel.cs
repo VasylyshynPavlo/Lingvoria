@@ -16,5 +16,5 @@ public class WordsCollectionModel
     public string UserId { get; set; } = string.Empty;
     [Required]
     public string Language { get; set; } = string.Empty;
-    public List<WordModel> Words { get; set; }
+    public List<WordModel> Words { get; set; } = [];
 }

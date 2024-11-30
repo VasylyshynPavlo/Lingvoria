@@ -1,4 +1,6 @@
 using Core.Models;
+using Core.Models.Create;
+using Core.Models.Update;
 using MongoDB.Bson;
 
 namespace Core.Interfaces;
@@ -11,7 +13,7 @@ public interface IWordService
     Task<Result> CreateCollection(CreateWordsCollectionModel collectionModel);
     Task<Result> DeleteCollection(string collectionId);
     Task<Result> GetCollections();
-    Task<Result> UpdateCollection(string collectionId, string language, string title);
+    Task<Result> UpdateCollection(UpdateWordCollectionModel collectionModel);
     Task<Result> GetCollectionById(string collectionId);
     
     #endregion
@@ -22,7 +24,7 @@ public interface IWordService
     Task<Result> AddWord(CreateWordModel word);
     Task<Result> DeleteWord(string collectionId, string wordId);
     Task<Result> GetWords(string collectionId);
-    Task<Result> UpdateWord(string collectionId, string wordId, string language, string title);
+    Task<Result> UpdateWord(string collectionId, string wordId, string? language, string? title);
     Task<Result> GetWordById(string collectionId, string wordId);
     
     #endregion

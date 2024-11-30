@@ -1,9 +1,11 @@
 
-namespace Core.Models;
+using System.ComponentModel;
+
+namespace Core.Models.Create;
 
 public class CreateWordsCollectionModel
 {
-    public string UserId { get; set; } 
-    public string Language { get; set; }
-    public string Title { get; set; }
+    [DefaultValue("null")] public required string UserId { get; set; } 
+    [DefaultValue("English")]public required string Language { get; set; }
+    [DefaultValue("")]public string? Title { get; set; }
 }

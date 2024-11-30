@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace Core.Models;
+namespace Core.Models.Create;
 
 public class CreateWordModel
 {

@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Core.Models;
+namespace Core.Models.Create;
 
 public class CreateExampleModel
 {

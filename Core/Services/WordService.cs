@@ -1,6 +1,8 @@
 using AutoMapper;
 using Core.Interfaces;
 using Core.Models;
+using Core.Models.Create;
+using Core.Models.Update;
 using Data;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -19,7 +21,7 @@ public class WordService(LingvoriaDbContext context, IMapper mapper) : IWordServ
             UserId = collectionModel.UserId,
             Language = collectionModel.Language,
             Title = collectionModel.Title,
-            Words = new List<WordModel>()
+            Words = []
         };
         await context.WordsCollections.InsertOneAsync(newCollection);
         
@@ -41,16 +43,16 @@ public class WordService(LingvoriaDbContext context, IMapper mapper) : IWordServ
         return new Result("200", "Collections Retrieved", collections);
     }
 
-    public async Task<Result> UpdateCollection(string collectionId, string? language, string? title)
+    public async Task<Result> UpdateCollection(UpdateWordCollectionModel collectionModel)
     {
-        var collection = mapper.Map<WordsCollectionModel>(await context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId)).FirstOrDefaultAsync());
+        var collection = mapper.Map<WordsCollectionModel>(await context.WordsCollections.Find(w => w.Id == new ObjectId(collectionModel.CollectionId)).FirstOrDefaultAsync());
         
         if (collection == null) return new Result("404", "Collection Not Found");;
-        if (language != null) collection.Language = language;
-        if (title != null) collection.Title = title;
+        if (collectionModel.Language != null) collection.Language = collectionModel.Language;
+        if (collectionModel.Title != null) collection.Title = collectionModel.Title;
 
-        await context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId), collection);
-        
+        var result = await context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionModel.CollectionId), collection);
+        if (result.ModifiedCount == 0) return new Result("404", "Collection Not Found");;
         return new Result("200", "Collection Updated");
     }
 

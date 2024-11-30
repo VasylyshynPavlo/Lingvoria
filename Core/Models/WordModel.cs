@@ -16,5 +16,5 @@ public class WordModel
     public string Description { get; set; } = string.Empty;
     
     public string? Translate { get; set; } = string.Empty;
-    public List<ExampleModel> Examples { get; set; }
+    public List<ExampleModel> Examples { get; set; } = [];
 }
