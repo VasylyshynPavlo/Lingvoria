@@ -1,12 +1,11 @@
+using System.ComponentModel;
+
 namespace Core.Models
 {
     public class LoginModel
     {
-        public string Email { get; set; }
-        public string Password { get; set; }
-    }
-    public class LoginResponse
-    {
-        public string AccessToken { get; set; }
+        [DefaultValue("")] public string? Username { get; set; }
+        [DefaultValue("")] public string? Email { get; set; }
+        [DefaultValue("")] public required string Password { get; set; }
     }
 }
