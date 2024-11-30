@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/qzxEsTSX7o=",
+  "dgSpecHash": "nThq81b8EHE=",
   "success": true,
-  "projectFilePath": "/home/pashhun/Study/ITSTEP/С#/LingvoriaAPI/LingvoriaAPI.csproj",
+  "projectFilePath": "/home/pashhun/Study/itstep/ch/Lingvoria/LingvoriaAPI/LingvoriaAPI.csproj",
   "expectedPackageFiles": [
     "/home/pashhun/.nuget/packages/automapper/13.0.1/automapper.13.0.1.nupkg.sha512",
     "/home/pashhun/.nuget/packages/bcrypt.net/0.1.0/bcrypt.net.0.1.0.nupkg.sha512",
@@ -154,7 +154,8 @@
     "/home/pashhun/.nuget/packages/system.threading.channels/7.0.0/system.threading.channels.7.0.0.nupkg.sha512",
     "/home/pashhun/.nuget/packages/system.threading.tasks.dataflow/7.0.0/system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
     "/home/pashhun/.nuget/packages/system.windows.extensions/7.0.0/system.windows.extensions.7.0.0.nupkg.sha512",
-    "/home/pashhun/.nuget/packages/zstdsharp.port/0.7.3/zstdsharp.port.0.7.3.nupkg.sha512"
+    "/home/pashhun/.nuget/packages/zstdsharp.port/0.7.3/zstdsharp.port.0.7.3.nupkg.sha512",
+    "/home/pashhun/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.10/microsoft.aspnetcore.app.ref.8.0.10.nupkg.sha512"
   ],
   "logs": [
     {

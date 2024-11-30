@@ -7118,11 +7118,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/pashhun/Study/ITSTEP/С#/LingvoriaAPI/LingvoriaAPI.csproj",
+      "projectUniqueName": "/home/pashhun/Study/itstep/ch/Lingvoria/LingvoriaAPI/LingvoriaAPI.csproj",
       "projectName": "LingvoriaAPI",
-      "projectPath": "/home/pashhun/Study/ITSTEP/С#/LingvoriaAPI/LingvoriaAPI.csproj",
+      "projectPath": "/home/pashhun/Study/itstep/ch/Lingvoria/LingvoriaAPI/LingvoriaAPI.csproj",
       "packagesPath": "/home/pashhun/.nuget/packages/",
-      "outputPath": "/home/pashhun/Study/ITSTEP/С#/LingvoriaAPI/obj/",
+      "outputPath": "/home/pashhun/Study/itstep/ch/Lingvoria/LingvoriaAPI/obj/",
       "projectStyle": "PackageReference",
       "UsingMicrosoftNETSdk": false,
       "configFilePaths": [
@@ -7138,8 +7138,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj": {
-              "projectPath": "/home/pashhun/Study/ITSTEP/С#/Core/Core.csproj"
+            "/home/pashhun/Study/itstep/ch/Lingvoria/Core/Core.csproj": {
+              "projectPath": "/home/pashhun/Study/itstep/ch/Lingvoria/Core/Core.csproj"
             }
           }
         }
@@ -7148,11 +7148,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -7203,6 +7198,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.10, 8.0.10]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -7211,7 +7212,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/home/pashhun/.dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
