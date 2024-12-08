@@ -20,7 +20,7 @@ public interface IWordService
     //Words-----------------------------------
     #region Words
     
-    Task<Response> AddWord(CreateWordForm word);
+    Task<Response> AddWord(CreateWordForm word, string collectionId);
     Task<Response> DeleteWord(string collectionId, string wordId);
     Task<Response> GetWords(string collectionId);
     Task<Response> UpdateWord(string collectionId, string wordId, string? language, string? title, string? description);
@@ -36,6 +36,13 @@ public interface IWordService
     Task<Response> GetExamples(string collectionId, string wordId);
     Task<Response> UpdateExample(string collectionId, string wordId, string exampleId, string? text, string? translate);
     Task<Response> GetExampleById(string collectionId, string wordId, string exampleId);
+    
+    #endregion
+    
+    
+    #region Logic
+    
+    Task<bool> IsMyCollection(string collectionId, string userId);
     
     #endregion
 }

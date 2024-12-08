@@ -69,9 +69,9 @@ public class WordService(LingvoriaDbContext context, IMapper mapper) : IWordServ
 
     //Words-----------------------------------
     #region Words
-    public async Task<Response> AddWord(CreateWordForm word)
+    public async Task<Response> AddWord(CreateWordForm word, string collectionId)
     {
-        var collection = await context.WordsCollections.Find(w => w.Id == new ObjectId(word.CollectionId)).FirstOrDefaultAsync();
+        var collection = await context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId)).FirstOrDefaultAsync();
         var newWord = new Word
         {
             Id = ObjectId.GenerateNewId(),
@@ -81,9 +81,8 @@ public class WordService(LingvoriaDbContext context, IMapper mapper) : IWordServ
             Examples = new List<Example>()
         };
         collection.Words.Add(newWord);
-        var result = await context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(word.CollectionId), collection);
-        if (result.ModifiedCount == 0) return new Response(404, "Collection Not Found");
-        return new Response(200, "Word Created");
+        var result = await context.WordsCollections.ReplaceOneAsync(w => w.Id == new ObjectId(collectionId), collection);
+        return result.ModifiedCount == 0 ? new Response(404, "Collection Not Found") : new Response(200, "Word Created");
     }
     
     public async Task<Response> DeleteWord(string collectionId, string wordId)
@@ -100,8 +99,7 @@ public class WordService(LingvoriaDbContext context, IMapper mapper) : IWordServ
         var collection = await context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId)).FirstOrDefaultAsync();
         if (collection == null) return new Response(404, "Collection Not Found");;
         var words = collection.Words;
-        if (words.Count == 0) return new Response(404, "Words Not Found");
-        return new Response(200, "Words Retrieved", words);
+        return words.Count == 0 ? new Response(404, "Collection don't have words") : new Response(200, "Words Retrieved", words);
     }
     public async Task<Response> UpdateWord(string collectionId, string wordId, string? text, string? translate, string? description)
     {
@@ -122,9 +120,7 @@ public class WordService(LingvoriaDbContext context, IMapper mapper) : IWordServ
         var collection = await context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId)).FirstOrDefaultAsync();
         if (collection == null) return new Response(404, "Collection Not Found");
         var word = collection.Words.FirstOrDefault(w => w.Id == new ObjectId(wordId));
-        if (word == null) return new Response(404, "Word Not Found");
-        
-        return new Response(200, "Word Retrieved", word);
+        return word == null ? new Response(404, "Word Not Found") : new Response(200, "Word Retrieved", word);
     }
 
     #endregion
@@ -192,6 +188,19 @@ public class WordService(LingvoriaDbContext context, IMapper mapper) : IWordServ
         var example = word.Examples.FirstOrDefault(w => w.Id == new ObjectId(exampleId));
         if (example == null) return new Response(404, "Example Not Found");
         return new Response(200, "Example Retrieved", example);
+    }
+    
+    #endregion
+    
+    
+    #region Logic
+
+    public async Task<bool> IsMyCollection(string collectionId, string userId)
+    {
+        var collection = await context.WordsCollections.Find(w => w.Id == new ObjectId(collectionId)).FirstOrDefaultAsync();
+        if (collection == null) return false;
+        if (collection.UserId != userId) return false;
+        return true;
     }
     
     #endregion

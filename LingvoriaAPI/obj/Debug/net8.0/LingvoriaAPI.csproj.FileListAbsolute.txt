@@ -244,3 +244,4 @@
 /home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/obj/Debug/net8.0/LingvoriaAPI.pdb
 /home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/obj/Debug/net8.0/LingvoriaAPI.genruntimeconfig.cache
 /home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/obj/Debug/net8.0/ref/LingvoriaAPI.dll
+/home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/obj/Debug/net8.0/LingvoriaAPI.sourcelink.json
