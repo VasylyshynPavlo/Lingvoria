@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LingvoriaAPI", "LingvoriaAPI\LingvoriaAPI.csproj", "{C8FD572C-5846-49AC-AD75-D3C05530D7E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{28B383FB-83AD-4B59-BE03-0E46218F4913}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8FD572C-5846-49AC-AD75-D3C05530D7E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8FD572C-5846-49AC-AD75-D3C05530D7E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8FD572C-5846-49AC-AD75-D3C05530D7E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8FD572C-5846-49AC-AD75-D3C05530D7E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28B383FB-83AD-4B59-BE03-0E46218F4913}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28B383FB-83AD-4B59-BE03-0E46218F4913}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28B383FB-83AD-4B59-BE03-0E46218F4913}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28B383FB-83AD-4B59-BE03-0E46218F4913}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
