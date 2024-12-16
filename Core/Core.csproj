@@ -7,19 +7,19 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="AutoMapper" Version="13.0.1" />
-      <PackageReference Include="BCrypt.Net" Version="0.1.0" />
-      <PackageReference Include="MongoDB.Bson" Version="3.0.0" />
-      <PackageReference Include="MongoDB.Driver" Version="3.0.0" />
+        <PackageReference Include="AutoMapper" Version="13.0.1"/>
+        <PackageReference Include="BCrypt.Net" Version="0.1.0"/>
+        <PackageReference Include="MongoDB.Bson" Version="3.0.0"/>
+        <PackageReference Include="MongoDB.Driver" Version="3.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="Microsoft.IdentityModel.Tokens">
-        <HintPath>..\..\..\.nuget\packages\microsoft.identitymodel.tokens\7.1.2\lib\net8.0\Microsoft.IdentityModel.Tokens.dll</HintPath>
-      </Reference>
-      <Reference Include="System.IdentityModel.Tokens.Jwt">
-        <HintPath>..\..\..\.nuget\packages\system.identitymodel.tokens.jwt\7.1.2\lib\net8.0\System.IdentityModel.Tokens.Jwt.dll</HintPath>
-      </Reference>
+        <Reference Include="Microsoft.IdentityModel.Tokens">
+            <HintPath>..\..\..\.nuget\packages\microsoft.identitymodel.tokens\7.1.2\lib\net8.0\Microsoft.IdentityModel.Tokens.dll</HintPath>
+        </Reference>
+        <Reference Include="System.IdentityModel.Tokens.Jwt">
+            <HintPath>..\..\..\.nuget\packages\system.identitymodel.tokens.jwt\7.1.2\lib\net8.0\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
 </Project>

@@ -1,5 +1,4 @@
 using System.Security.Claims;
-using Core.Models;
 using Core.Models.UserModels;
 
 namespace Core.Interfaces;

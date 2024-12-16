@@ -11,13 +11,15 @@ public class WordsCollection
     [BsonRepresentation(BsonType.ObjectId)]
     [DataMember]
     public ObjectId Id { get; set; }
+
     public string? Title { get; set; }
-    [Required]
-    public string UserId { get; set; } = string.Empty;
-    [Required]
-    public string Language { get; set; } = string.Empty;
+
+    [Required] public string UserId { get; set; } = string.Empty;
+
+    [Required] public string Language { get; set; } = string.Empty;
+
     public List<Word> Words { get; set; } = [];
-    
+
     public object ToDto()
     {
         return new

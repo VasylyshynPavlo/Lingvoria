@@ -5,6 +5,7 @@ using Core.Interfaces;
 using Core.MapperProfile;
 using Core.Models;
 using Core.Services;
+using LingvoriaAPI;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -16,6 +17,19 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", builder =>
+    {
+        builder.WithOrigins("http://localhost:5199")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+        builder.WithOrigins("http://localhost:5173")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+    });
+});
 
 var jwtOpts = builder.Configuration.GetSection(nameof(JwtOptions)).Get<JwtOptions>()!;
 
@@ -36,7 +50,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddSwaggerGen(options =>
 {
-    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
         In = ParameterLocation.Header,
@@ -86,12 +100,13 @@ builder.Services.AddSingleton(sp =>
 builder.Services.AddSingleton<PasswordHasher>();
 
 // Налаштування AccountService
-builder.Services.AddSingleton<IAccountService, AccountService>(sp =>
+builder.Services.AddSingleton<IAccountService, AccountManager>(sp =>
 {
     var hasher = sp.GetRequiredService<PasswordHasher>();
     var context = sp.GetRequiredService<LingvoriaDbContext>();
     var jwt = sp.GetRequiredService<JwtService>();
-    return new AccountService(hasher, context, jwt);
+    var mapper = sp.GetRequiredService<IMapper>();
+    return new AccountManager(hasher, context, jwt, mapper);
 });
 
 builder.Services.AddSingleton<IWordService, WordService>(sp =>
@@ -99,6 +114,12 @@ builder.Services.AddSingleton<IWordService, WordService>(sp =>
     var context = sp.GetRequiredService<LingvoriaDbContext>();
     var mapper = sp.GetRequiredService<IMapper>();
     return new WordService(context, mapper);
+});
+
+builder.Services.AddSingleton<IEmailService, EmailService>(sp =>
+{
+    var context = sp.GetRequiredService<LingvoriaDbContext>();
+    return new EmailService(context);
 });
 
 
@@ -109,6 +130,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseHttpsRedirection();
 

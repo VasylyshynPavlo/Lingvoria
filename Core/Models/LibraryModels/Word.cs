@@ -10,12 +10,13 @@ public class Word
     [BsonRepresentation(BsonType.ObjectId)]
     [DataMember]
     public ObjectId Id { get; set; }
+
     public string Text { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
-    
+    public string? Description { get; set; } = string.Empty;
+
     public string? Translate { get; set; } = string.Empty;
     public List<Example> Examples { get; set; } = [];
-    
+
     public object ToDto()
     {
         return new

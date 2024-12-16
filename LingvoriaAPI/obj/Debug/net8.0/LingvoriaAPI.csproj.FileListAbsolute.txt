@@ -217,8 +217,6 @@
 /home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
-/home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/runtimes/win/lib/net7.0/Microsoft.Win32.SystemEvents.dll
-/home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Drawing.Common.dll
 /home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Security.Cryptography.ProtectedData.dll
 /home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/runtimes/win/lib/net7.0/System.Windows.Extensions.dll
 /home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/Core.dll
@@ -245,3 +243,10 @@
 /home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/obj/Debug/net8.0/LingvoriaAPI.genruntimeconfig.cache
 /home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/obj/Debug/net8.0/ref/LingvoriaAPI.dll
 /home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/obj/Debug/net8.0/LingvoriaAPI.sourcelink.json
+/home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/AppSettings.dll
+/home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/Microsoft.Extensions.Configuration.Binder.dll
+/home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/Middleware.dll
+/home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/PluginManager.dll
+/home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/SharedLib.dll
+/home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/SharedPluginFeatures.dll
+/home/pashhun/RiderProjects/LingvoriaAPI/LingvoriaAPI/bin/Debug/net8.0/runtimes/win/lib/net8.0/Microsoft.Win32.SystemEvents.dll

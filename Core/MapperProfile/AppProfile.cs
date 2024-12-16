@@ -8,7 +8,7 @@ public class AppProfile : Profile
 {
     public AppProfile()
     {
-        CreateMap<User, GetUser>()
+        CreateMap<User, ShortUser>()
             .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
             .ForMember(dest => dest.Avatar, opt => opt.MapFrom(src => src.AvatarUrl ?? string.Empty))
             .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.Username))

@@ -10,9 +10,10 @@ public class Example
     [BsonRepresentation(BsonType.ObjectId)]
     [DataMember]
     public ObjectId Id { get; set; }
+
     public string Text { get; set; } = string.Empty;
-    public string Translate { get; set; } = string.Empty;
-    
+    public string? Translate { get; set; } = string.Empty;
+
     public object ToDto()
     {
         return new
@@ -22,5 +23,4 @@ public class Example
             Translate
         };
     }
-
 }

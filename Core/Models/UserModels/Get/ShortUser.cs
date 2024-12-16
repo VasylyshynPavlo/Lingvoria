@@ -1,6 +1,6 @@
 namespace Core.Models.UserModels.Get;
 
-public class GetUser
+public class ShortUser
 {
     public required string Id { get; set; }
     public string? Avatar { get; set; }
