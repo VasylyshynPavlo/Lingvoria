@@ -789,7 +789,6 @@
       "packagesPath": "/home/pashhun/.nuget/packages/",
       "outputPath": "/home/pashhun/RiderProjects/LingvoriaAPI/Core/obj/",
       "projectStyle": "PackageReference",
-      "UsingMicrosoftNETSdk": false,
       "configFilePaths": [
         "/home/pashhun/.nuget/NuGet/NuGet.Config"
       ],
