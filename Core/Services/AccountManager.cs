@@ -103,15 +103,15 @@ public class AccountManager(PasswordHasher hasher, LingvoriaDbContext context, J
         });
     }
 
-    public async Task<Response> UpdateUserInfo(string avatarUrl, string username, string fullName, string email,
+    public async Task<Response> UpdateUserInfo(string? avatarUrl, string? username, string? fullName, string? email,
         string userId)
     {
         var user = await context.Users.Find(u => u.Id == new ObjectId(userId)).FirstOrDefaultAsync();
         if (user == null) return new Response(404, "User does not exist.");
-        user.AvatarUrl = avatarUrl;
-        user.Username = username;
-        user.FullName = fullName;
-        user.Email = email;
+        if (avatarUrl != null) user.AvatarUrl = avatarUrl;
+        if (username != null) user.Username = username;
+        if (fullName != null) user.FullName = fullName;
+        if (email != null) user.Email = email;
         await context.Users.ReplaceOneAsync(u => u.Id == new ObjectId(userId), user);
         return new Response(200, "User updated");
     }
@@ -140,5 +140,12 @@ public class AccountManager(PasswordHasher hasher, LingvoriaDbContext context, J
         user.Logs.Add(log);
         await context.Users.ReplaceOneAsync(u => u.Id == user.Id, user);
         return new Response(200, "Log added", user);
+    }
+
+    public async Task<Response> GetMyId(string userId)
+    {
+        var user = await context.Users.Find(u => u.Id == new ObjectId(userId)).FirstOrDefaultAsync();
+        if (user == null) return new Response(404, "User does not exist.");
+        return new Response(200, "User retrieved", user.Id);
     }
 }

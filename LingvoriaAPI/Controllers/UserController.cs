@@ -75,7 +75,7 @@ public class UserController(IAccountService accountService, IEmailService emailS
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [HttpPut]
     [Route("user")]
-    public async Task<IActionResult> UpdateUser(string avatarUrl, string username, string fullName, string email)
+    public async Task<IActionResult> UpdateUser(string? avatarUrl, string username, string? fullName, string email)
     {
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (string.IsNullOrEmpty(userId)) return Unauthorized();
@@ -96,6 +96,7 @@ public class UserController(IAccountService accountService, IEmailService emailS
         return Ok();
     }
 
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [HttpGet("/get-verification-email-code")]
     public async Task<IActionResult> GetVerificationEmailCode()
     {
@@ -111,6 +112,7 @@ public class UserController(IAccountService accountService, IEmailService emailS
         };
     }
 
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [HttpPost("/verify-email-code")]
     public async Task<IActionResult> VeryficateEmail(string code)
     {
@@ -125,5 +127,21 @@ public class UserController(IAccountService accountService, IEmailService emailS
         //     _ => BadRequest("Something went wrong")
         // };
         return Ok();
+    }
+
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [HttpGet("get-my-id")]
+    public async Task<IActionResult> GetMyId()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userId == null) return Unauthorized();
+        var response = await accountService.GetMyId(userId);
+        return response.Code switch
+        {
+            200 => Ok(response.Data.ToString()),
+            400 => BadRequest(response.Message),
+            404 => NotFound(response.Data),
+            _ => BadRequest("Something went wrong")
+        };
     }
 }
